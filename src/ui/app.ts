@@ -10,7 +10,8 @@ import { gdpBars, gdpHistoryOption, gdpOption, type GdpBar } from './charts/gdp'
 import { networthOption, type NetworthSeriesMeta } from './charts/networth';
 import { taxStackOption, type TaxStackMeta } from './charts/taxstack';
 import { assignCountrySlots, countryColor, echarts, isDark, mountChart } from './charts/theme';
-import { renderDrilldown, type DrillTarget } from './components/drilldown';
+import { renderDrilldown, type DrillTarget, type DrilldownCtx } from './components/drilldown';
+import { isMetric, renderMetricSheet, type Metric } from './components/metric-sheet';
 import { freshnessFooter } from './components/freshness';
 import { createInputsPanel, type InputsPanel } from './components/inputs-panel';
 import { renderHero } from './components/hero';
@@ -57,17 +58,31 @@ export function startApp(): void {
     hideTooltips();
     const ledger = ledgers.find((l) => l.country === target.country && l.asset === target.asset);
     if (!ledger) return;
-    const t = dataset.tax[target.country];
-    renderDrilldown(sheetBody, ledger, target, {
+    renderDrilldown(sheetBody, ledger, target, drillCtx());
+    sheetChart.hidden = true;
+    showSheet();
+    $('#sheet-close').focus();
+  }
+
+  function drillCtx(): DrilldownCtx {
+    return {
       names,
       jurisdictionNote: (c) => dataset.tax[c]?.jurisdiction_note,
       taxYear: (c) => dataset.tax[c]?.tax_year,
       realNote: state.real ? `USD amounts are in today's dollars (${state.infl}% inflation removed); local-currency amounts are as charged in that year.` : undefined,
-    });
+    };
+  }
+
+  /** Net value, Total tax and Tax / gain each get their own sheet explaining how the figure was arrived at. */
+  function openMetricSheet(country: CountryCode, asset: LedgerAsset, metric: Metric): void {
+    hideTooltips();
+    const ledger = ledgers.find((l) => l.country === country && l.asset === asset);
+    if (!ledger) return;
+    clear(sheetBody);
+    renderMetricSheet(sheetBody, ledger, metric, drillCtx(), openSheet);
     sheetChart.hidden = true;
     showSheet();
     $('#sheet-close').focus();
-    void t;
   }
 
   let sheetChartInstance: echarts.ECharts | undefined;
@@ -115,7 +130,7 @@ export function startApp(): void {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sheet.classList.contains('is-open')) closeSheet(); });
 
   function renderSummary(): void {
-    renderSummaryTables(summaryHost, ledgers, state, names, (country, asset, stage) => openSheet({ country, asset, stage }));
+    renderSummaryTables(summaryHost, ledgers, state, names, (country, asset, cell) => (isMetric(cell) ? openMetricSheet(country, asset, cell) : openSheet({ country, asset, stage: cell })));
   }
 
 

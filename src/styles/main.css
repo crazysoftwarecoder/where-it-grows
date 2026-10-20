@@ -366,6 +366,32 @@ body.sheet-open .backdrop { opacity: 1; pointer-events: auto; }
 .rule-total { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-2); padding: 0 2px; }
 .rule-total strong { color: var(--ink); font-variant-numeric: tabular-nums; }
 .empty { color: var(--ink-2); font-size: 14px; padding: 14px; background: var(--surface-2); border-radius: 14px; }
+/* Metric sheets: net value bridge, tax by rule, tax / gain. */
+.summary td[data-cell] { cursor: pointer; }
+.summary tbody tr:hover td[data-cell]:hover { color: var(--gold-ink); text-decoration: underline dotted; text-underline-offset: 3px; }
+button.kpi { text-align: left; font: inherit; color: inherit; cursor: pointer; transition: border-color 0.2s, box-shadow 0.3s var(--ease); }
+button.kpi:hover { border-color: var(--gold); box-shadow: var(--shadow-lift); }
+.sheet h4.section { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-top: 4px; }
+.bridge { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.bridge th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px; border-bottom: 1px solid var(--grid); }
+.bridge td { padding: 8px 6px; border-bottom: 1px solid var(--grid); transition: background 0.2s; }
+.bridge .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bridge .neg { color: var(--ink-2); }
+.bridge .sub { color: var(--muted); font-size: 12px; }
+.bridge tr.is-link { cursor: pointer; }
+.bridge tr.is-link:hover td { background: var(--surface-2); }
+.bridge tfoot td { font-weight: 600; border-top: 2px solid var(--border-strong); border-bottom: 0; }
+.bridge tfoot td.num { font-family: var(--serif); font-size: 16px; }
+.bridge.years { font-size: 13px; }
+.rule-list { display: grid; gap: 6px; }
+.rule-row { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; font: inherit; color: inherit; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; cursor: pointer; transition: box-shadow 0.3s var(--ease), border-color 0.3s; }
+.rule-row:hover { border-color: var(--border-strong); box-shadow: var(--shadow-lift); }
+.rule-row .label { flex: 1; font-size: 13.5px; line-height: 1.4; }
+.rule-row .sub { color: var(--muted); font-size: 12px; }
+.rule-row strong { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rule-row strong.is-refund { color: var(--good); }
+.formula { font-family: var(--serif); font-size: 17px; line-height: 1.5; padding: 12px 14px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.notes { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--ink-2); font-size: 13px; line-height: 1.55; }
 
 /* ============================================================ footer */
 .freshness { color: var(--ink-2); font-size: 12.5px; display: grid; gap: 8px; padding: 8px 4px 24px; line-height: 1.6; }

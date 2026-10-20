@@ -4,14 +4,15 @@ import { countryColor } from '../charts/palette';
 import { clear, h } from '../dom';
 import { ASSET_LABEL, ASSET_ORDER, pct, usd, usdCompact } from '../format';
 import type { AppState } from '../state';
+import type { Metric } from './metric-sheet';
 
-/** "Where you end up" tables. Rows open the drill-down via onRow; the Ingress, Growth and Egress cells open their own stage, anywhere else opens egress. */
+/** "Where you end up" tables. Each figure opens its own sheet via onCell: a tax stage or one of the headline metrics; the rest of the row opens egress. */
 export function renderSummary(
   host: HTMLElement, ledgers: Ledger[], state: AppState, names: Record<CountryCode, string>,
-  onRow: (country: CountryCode, asset: LedgerAsset, stage: Stage) => void,
+  onCell: (country: CountryCode, asset: LedgerAsset, cell: Stage | Metric) => void,
 ): void {
   clear(host);
-  const stageOf = (e: Event): Stage => ((e.target as Element | null)?.closest('td[data-stage]')?.getAttribute('data-stage') as Stage | null) ?? 'egress';
+  const cellOf = (e: Event): Stage | Metric => ((e.target as Element | null)?.closest('td[data-cell]')?.getAttribute('data-cell') as Stage | Metric | null) ?? 'egress';
   const assets = ASSET_ORDER.filter((a) => ledgers.some((l) => l.asset === a));
   for (const asset of assets) {
     const rows = ledgers.filter((l) => l.asset === asset).sort((a, b) => b.finalNetUsd - a.finalNetUsd);
@@ -23,16 +24,16 @@ export function renderSummary(
         ...(asset === 'property' && state.lvr > 0 ? [h('th', { class: 'num' }, 'Price'), h('th', { class: 'num' }, 'Loan')] : []),
       )),
       h('tbody', null, ...rows.map((l) => h('tr', { tabindex: 0, role: 'button', 'aria-label': `Show taxes for ${names[l.country]} ${asset}`,
-        onclick: (e: MouseEvent) => onRow(l.country, asset, stageOf(e)),
-        onkeydown: (e: KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onRow(l.country, asset, 'egress'); } },
+        onclick: (e: MouseEvent) => onCell(l.country, asset, cellOf(e)),
+        onkeydown: (e: KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onCell(l.country, asset, 'egress'); } },
       },
         h('td', null, h('span', { class: 'swatch', style: `background:${countryColor(l.country)}` }), names[l.country]),
-        h('td', { class: 'num' }, usd(l.finalNetUsd)),
-        h('td', { class: 'num' }, usd(l.totalsUsd.taxes.all)),
-        h('td', { class: 'num' }, pct(l.effectiveTaxRate)),
-        h('td', { class: 'num', 'data-stage': 'ingress', title: 'Show taxes when buying in' }, usdCompact(l.totalsUsd.taxes.ingress)),
-        h('td', { class: 'num', 'data-stage': 'growth', title: 'Show taxes each year' }, usdCompact(l.totalsUsd.taxes.growth)),
-        h('td', { class: 'num', 'data-stage': 'egress', title: 'Show taxes when selling out' }, usdCompact(l.totalsUsd.taxes.egress)),
+        h('td', { class: 'num', 'data-cell': 'net', title: 'Show how this net value was arrived at' }, usd(l.finalNetUsd)),
+        h('td', { class: 'num', 'data-cell': 'tax', title: 'Show every tax, rule by rule' }, usd(l.totalsUsd.taxes.all)),
+        h('td', { class: 'num', 'data-cell': 'rate', title: 'Show how this rate is calculated' }, pct(l.effectiveTaxRate)),
+        h('td', { class: 'num', 'data-cell': 'ingress', title: 'Show taxes when buying in' }, usdCompact(l.totalsUsd.taxes.ingress)),
+        h('td', { class: 'num', 'data-cell': 'growth', title: 'Show taxes each year' }, usdCompact(l.totalsUsd.taxes.growth)),
+        h('td', { class: 'num', 'data-cell': 'egress', title: 'Show taxes when selling out' }, usdCompact(l.totalsUsd.taxes.egress)),
         ...(asset === 'property' && state.lvr > 0 ? [h('td', { class: 'num' }, usdCompact(l.purchasePriceUsd)), h('td', { class: 'num' }, usdCompact(l.loanUsd))] : []),
       ))),
     ));
