@@ -1,6 +1,6 @@
 # Where it Grows
 
-Static site that simulates investing USD 100,000 (adjustable) for 10–25 years in 10 countries (AU, US-Texas, US-California, UK, CA, NZ, SG, UAE, DE, CH, IN) and shows every tax that bites at **ingress**, **growth** (each year) and **egress**, for equities and residential property side by side. Also shows GDP-per-capita growth and median family-of-4 expenses per country. Charts are clickable: a click opens a drill-down listing each tax with amount, plain-English rule, source URL and last-verified date.
+Static site that simulates investing USD 100,000 (adjustable) for 10–25 years in 11 countries (AU, US-Texas, US-California, UK, CA, NZ, SG, UAE, DE, CH, IN, NO) and shows every tax that bites at **ingress**, **growth** (each year) and **egress**, for equities and residential property side by side. Also shows GDP-per-capita growth and median family-of-4 expenses per country. Charts are clickable: a click opens a drill-down listing each tax with amount, plain-English rule, source URL and last-verified date.
 
 ## Task Management
 

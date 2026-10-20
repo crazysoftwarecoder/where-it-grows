@@ -163,6 +163,21 @@
           "note": "Local currency units per 1 USD; API time_last_update_utc: Mon, 12 Oct 2026 00:02:32 +0000."
         }
       }
+    },
+    {
+      "code": "no",
+      "iso3": "NOR",
+      "name": "Norway",
+      "currency": "NOK",
+      "fx_to_usd": {
+        "value": 9.4198,
+        "meta": {
+          "source": "https://open.er-api.com/v6/latest/USD",
+          "source_title": "open.er-api.com USD base rates",
+          "last_verified": "2026-10-20",
+          "note": "Local currency units per 1 USD; API time_last_update_utc: Tue, 20 Oct 2026 00:02:32 +0000."
+        }
+      }
     }
   ]
 }

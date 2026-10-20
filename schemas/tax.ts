@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { MetaSchema } from './meta';
 
-export const CountryCodeSchema = z.enum(['au', 'us-tx', 'us-ca', 'uk', 'ca', 'nz', 'sg', 'ae', 'de', 'ch', 'in']);
+export const CountryCodeSchema = z.enum(['au', 'us-tx', 'us-ca', 'uk', 'ca', 'nz', 'sg', 'ae', 'de', 'ch', 'in', 'no']);
 export type CountryCode = z.infer<typeof CountryCodeSchema>;
 
 const IsoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD');

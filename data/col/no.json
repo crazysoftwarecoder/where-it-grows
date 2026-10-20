@@ -1,0 +1,87 @@
+{
+  "country": "no",
+  "household": "2 adults + 2 children",
+  "city": "Oslo",
+  "currency": "NOK",
+  "base_year": 2022,
+  "categories": {
+    "housing_rent": {
+      "value": 269419,
+      "meta": {
+        "source": "https://www.numbeo.com/cost-of-living/in/Oslo",
+        "source_title": "Numbeo cost of living — Oslo (updated 6 Oct 2026, 930 entries from 132 contributors)",
+        "last_verified": "2026-10-20",
+        "note": "secondary source for rent only; 3-bedroom apartment outside city centre NOK 22,451.61/month x12 (2026 prices). SSB group 04 'Bolig, elektrisitet og brensel' replaced because it is dominated by imputed owner rent"
+      }
+    },
+    "food": {
+      "value": 94813,
+      "meta": {
+        "source": "https://www.ssb.no/statbank/table/14152",
+        "source_title": "SSB Forbruksundersøkelsen 2022, table 14152 — Utgift per husholdning per år, par med barn, yngste barn 0-6 år (NOK/year)",
+        "last_verified": "2026-10-20",
+        "note": "01 Matvarer og alkoholfrie drikkevarer NOK 94,813"
+      }
+    },
+    "transport": {
+      "value": 111161,
+      "meta": {
+        "source": "https://www.ssb.no/statbank/table/14152",
+        "source_title": "SSB Forbruksundersøkelsen 2022, table 14152 — Utgift per husholdning per år, par med barn, yngste barn 0-6 år (NOK/year)",
+        "last_verified": "2026-10-20",
+        "note": "07 Transport NOK 111,161, of which vehicle purchase NOK 69,158, running costs NOK 30,068, passenger transport NOK 10,735"
+      }
+    },
+    "childcare_education": {
+      "value": 44360,
+      "meta": {
+        "source": "https://www.ssb.no/statbank/table/14152",
+        "source_title": "SSB Forbruksundersøkelsen 2022, table 14152 — Utgift per husholdning per år, par med barn, yngste barn 0-6 år (NOK/year)",
+        "last_verified": "2026-10-20",
+        "note": "13.3 Sosiale omsorgstjenester (barnehage/SFO) NOK 42,220 plus 10 Utdanning NOK 2,140. Predates the cut in the national barnehage maximum fee to NOK 1,500/month from August 2025, so slightly high for 2026"
+      }
+    },
+    "healthcare": {
+      "value": 11175,
+      "meta": {
+        "source": "https://www.ssb.no/statbank/table/14152",
+        "source_title": "SSB Forbruksundersøkelsen 2022, table 14152 — Utgift per husholdning per år, par med barn, yngste barn 0-6 år (NOK/year)",
+        "last_verified": "2026-10-20",
+        "note": "06 Helse NOK 11,175 (out-of-pocket: medicines, dental, GP co-payments; public healthcare is tax-funded)"
+      }
+    },
+    "utilities": {
+      "value": 47934,
+      "meta": {
+        "source": "https://www.numbeo.com/cost-of-living/in/Oslo",
+        "source_title": "Numbeo cost of living — Oslo (updated 6 Oct 2026, 930 entries from 132 contributors)",
+        "last_verified": "2026-10-20",
+        "note": "secondary source; basic utilities for 85 m2 NOK 3,994.49/month x12 (2026 prices)"
+      }
+    },
+    "other": {
+      "value": 234708,
+      "meta": {
+        "source": "https://www.ssb.no/statbank/table/14152",
+        "source_title": "SSB Forbruksundersøkelsen 2022, table 14152 — Utgift per husholdning per år, par med barn, yngste barn 0-6 år (NOK/year)",
+        "last_verified": "2026-10-20",
+        "note": "02 Alkohol og tobakk 10,704; 03 Klær og skotøy 26,981; 05 Møbler og husholdningsartikler 35,393; 08 Informasjon og kommunikasjon 28,165; 09 Fritid, sport og kultur 55,511; 11 Servering og overnatting 28,104; 12 Forsikring og finansielle tjenester 31,182; 13.1 Personlig pleie 13,816; 13.2 Andre personlige varer 4,046; 13.9 Andre tjenester 806"
+      }
+    }
+  },
+  "inflation": {
+    "cpi_assumed": 0.034,
+    "meta": {
+      "source": "https://www.ssb.no/kpi",
+      "source_title": "SSB Konsumprisindeksen, September 2026",
+      "last_verified": "2026-10-20",
+      "note": "KPI 12-month change +3.4% (KPI-JAE +3.0%)"
+    }
+  },
+  "meta": {
+    "source": "https://www.ssb.no/statbank/table/14152",
+    "source_title": "SSB Forbruksundersøkelsen 2022, table 14152 — Utgift per husholdning per år, par med barn, yngste barn 0-6 år (NOK/year)",
+    "last_verified": "2026-10-20",
+    "note": "Primary source: SSB Forbruksundersøkelsen 2022 (latest survey), couples whose youngest child is 0-6, mean spend; housing replaced by an Oslo 3-bedroom market rent and utilities from Numbeo. For comparison SIFO's 2026 reference budget for two adults and children aged 5 and 11 (excluding housing and electricity) is NOK 462,456 a year: https://www.oslomet.no/om/nyheter/sifo-sitt-referansebudsjett-2026-framleis-brei-prisauke"
+  }
+}

@@ -1,0 +1,380 @@
+{
+  "country": "no",
+  "currency": "NOK",
+  "tax_year": "2026",
+  "jurisdiction_note": "Norwegian tax resident, single, living in Oslo; municipal property tax uses Oslo's 2026 rates. The portfolio is assumed to be the investor's only taxable wealth.",
+  "meta": {
+    "source": "https://www.regjeringen.no/no/tema/okonomi-og-budsjett/skatter-og-avgifter/skatte-og-avgiftssatser/skattesatser-2026/id3121978/",
+    "source_title": "Regjeringen — Skattesatser 2026 (final budget agreement)",
+    "last_verified": "2026-10-20",
+    "note": "Norway taxes capital income (rent, interest, property gains) at a flat 22% and share income at 22% × 1.72 = 37.84%, independent of salary. The income_tax schedule below is the marginal rate on gross salary and is informational: no modelled rule stacks on it."
+  },
+  "resident_profile": {
+    "other_income_options": [
+      480000,
+      670000,
+      1200000
+    ],
+    "meta": {
+      "source": "https://www.ssb.no/arbeid-og-lonn/lonn-og-arbeidskraftkostnader/artikler/hva-er-vanlig-lonn-i-norge",
+      "source_title": "SSB — Hva er vanlig lønn i Norge? (2025: median monthly salary NOK 55,800, mean NOK 62,070 per full-time equivalent)",
+      "last_verified": "2026-10-20",
+      "note": "low ≈ below-median full-time earner, mid ≈ median full-time salary (NOK 55,800 × 12), high ≈ senior professional in the top trinnskatt step. Because every modelled capital tax is flat, the band does not change the result."
+    }
+  },
+  "income_tax": {
+    "brackets": [
+      {
+        "from": 0,
+        "to": 99650,
+        "rate": 0
+      },
+      {
+        "from": 99650,
+        "to": 210240,
+        "rate": 0.076
+      },
+      {
+        "from": 210240,
+        "to": 226100,
+        "rate": 0.296
+      },
+      {
+        "from": 226100,
+        "to": 318300,
+        "rate": 0.313
+      },
+      {
+        "from": 318300,
+        "to": 725050,
+        "rate": 0.336
+      },
+      {
+        "from": 725050,
+        "to": 980100,
+        "rate": 0.433
+      },
+      {
+        "from": 980100,
+        "to": 1467200,
+        "rate": 0.464
+      },
+      {
+        "from": 1467200,
+        "to": null,
+        "rate": 0.474
+      }
+    ],
+    "meta": {
+      "source": "https://www.regjeringen.no/no/tema/okonomi-og-budsjett/skatter-og-avgifter/skatte-og-avgiftssatser/skattesatser-2026/id3121978/",
+      "source_title": "Regjeringen — Skattesatser 2026: alminnelig inntekt 22%; trinnskatt 1.7 / 4.0 / 13.7 / 16.8 / 17.8% from NOK 226,100 / 318,300 / 725,050 / 980,100 / 1,467,200; trygdeavgift 7.6% above NOK 99,650; personfradrag NOK 114,540; minstefradrag 46% capped at NOK 95,700",
+      "last_verified": "2026-10-20",
+      "note": "Composite marginal rate on gross salary = 22% on general income (after the 46% minstefradrag capped at NOK 95,700 and the NOK 114,540 personfradrag, so from about NOK 210,240 gross) + trygdeavgift 7.6% + trinnskatt. The 25% phase-in of trygdeavgift just above NOK 99,650 is ignored. Top marginal rate 47.4%."
+    }
+  },
+  "levies": [],
+  "assets": {
+    "equities": {
+      "ingress": [],
+      "growth": [
+        {
+          "id": "dividend_tax",
+          "label": "Tax on fund distributions (22% × 1.72 = 37.84%)",
+          "stage": "growth",
+          "category": "tax",
+          "base": "income",
+          "kind": {
+            "type": "flat",
+            "rate": 0.3784
+          },
+          "plain_english": "Dividends and fund distributions are grossed up by a factor of 1.72 and then taxed at the 22% general rate, so the effective rate is 37.84% whatever your salary. Norway has no stamp duty or transaction tax when you buy, so the first charge arrives with the first distribution.",
+          "meta": {
+            "source": "https://www.skatteetaten.no/satser/faktor-for-oppjustering-av-gevinsttap-eller-utbytte-pa-aksjer/",
+            "source_title": "Skatteetaten — Faktor for oppjustering av gevinst, tap eller utbytte på aksjer: 1.72 for 2026, i.e. 37.84% on dividends and gains",
+            "last_verified": "2026-10-20",
+            "note": "The shielding deduction (skjermingsfradrag, a risk-free return on the cost base that is tax-free; 3.6% for 2025) is not applied to distributions here. Its lifetime value is approximated at exit by indexing the cost base, see cgt_shares. Aksjesparekonto deferral and the NOK 1,000-style allowances do not exist for this income."
+          }
+        },
+        {
+          "id": "wealth_tax",
+          "label": "Wealth tax (formuesskatt) on 80% of fund value",
+          "stage": "growth",
+          "category": "tax",
+          "base": "net_value",
+          "kind": {
+            "type": "schedule",
+            "schedule": {
+              "brackets": [
+                {
+                  "from": 0,
+                  "to": 1900000,
+                  "rate": 0
+                },
+                {
+                  "from": 1900000,
+                  "to": 21500000,
+                  "rate": 0.01
+                },
+                {
+                  "from": 21500000,
+                  "to": null,
+                  "rate": 0.011
+                }
+              ],
+              "meta": {
+                "source": "https://www.skatteetaten.no/satser/formuesskatt/",
+                "source_title": "Skatteetaten — Formuesskatt 2026: 0% to NOK 1,900,000; 1.0% (0.35% municipal + 0.65% state) to NOK 21,500,000; 1.1% above. Shares and equity funds valued at 80% (20% valuation discount)",
+                "last_verified": "2026-10-20"
+              }
+            },
+            "stack_on_other_income": false
+          },
+          "modifiers": {
+            "taxable_fraction": 0.8
+          },
+          "plain_english": "Every year Norway taxes your net wealth above NOK 1.9 million at 1%, rising to 1.1% above NOK 21.5 million. Shares and equity funds count at 80% of their market value. Unlike most countries, this tax falls due whether or not you sold anything or earned anything.",
+          "meta": {
+            "source": "https://www.skatteetaten.no/satser/formuesskatt/",
+            "source_title": "Skatteetaten — Formuesskatt 2026 satser og verdsettingsrabatter",
+            "last_verified": "2026-10-20",
+            "note": "The NOK 1.9 million allowance applies to total net wealth; the portfolio is assumed to be the only taxable asset, so other wealth would push it into the taxed band sooner. Married couples get double thresholds."
+          }
+        }
+      ],
+      "egress": [
+        {
+          "id": "cgt_shares",
+          "label": "Tax on the gain (22% × 1.72 = 37.84%) after shielding",
+          "stage": "egress",
+          "category": "tax",
+          "base": "gain",
+          "kind": {
+            "type": "flat",
+            "rate": 0.3784
+          },
+          "modifiers": {
+            "cost_base_indexation": true
+          },
+          "plain_english": "When you sell, the gain is grossed up by 1.72 and taxed at 22%, an effective 37.84%, with no holding-period discount. Before that, the shielding deduction removes a risk-free return on what you paid, accumulated over every year you held, so only the excess return is taxed.",
+          "meta": {
+            "source": "https://www.skatteetaten.no/satser/faktor-for-oppjustering-av-gevinsttap-eller-utbytte-pa-aksjer/",
+            "source_title": "Skatteetaten — Oppjusteringsfaktor 1.72 (2026); skjermingsfradrag 3.6% for 2025",
+            "last_verified": "2026-10-20",
+            "note": "The shielding deduction is approximated by indexing the cost base at the simulator's inflation input (default 2.5%) rather than the official skjermingsrente (3.6% for 2025; 2026 rate set in January 2027), which slightly overstates the tax. Whole gain realised in one year."
+          }
+        }
+      ]
+    },
+    "property": {
+      "ingress": [
+        {
+          "id": "dokumentavgift",
+          "label": "Document fee (dokumentavgift) 2.5%",
+          "stage": "ingress",
+          "category": "tax",
+          "base": "principal",
+          "kind": {
+            "type": "flat",
+            "rate": 0.025
+          },
+          "plain_english": "Registering the transfer of a freehold property costs 2.5% of its market value, normally the purchase price, paid by the buyer. New builds and housing-cooperative shares (borettslag) are outside the charge, but a typical resale flat is not.",
+          "meta": {
+            "source": "https://kartverket.no/en/about-kartverket/faq",
+            "source_title": "Kartverket — Dokumentavgift: 2.5% of the property's current market value, with exemptions depending on circumstances",
+            "last_verified": "2026-10-20",
+            "note": "Modelled on the full purchase price. Buying a borettslag flat or a new build would avoid it; set rate to 0 to model that."
+          }
+        },
+        {
+          "id": "tinglysing",
+          "label": "Land-registry fees (tinglysingsgebyr)",
+          "stage": "ingress",
+          "category": "cost",
+          "base": "principal",
+          "kind": {
+            "type": "fixed",
+            "amount": 1200
+          },
+          "plain_english": "Kartverket charges a small fixed fee to register the deed and another to register the mortgage, about NOK 585 each. Buyers in Norway do not pay the estate agent, so this is close to the whole transaction cost on top of the document fee.",
+          "meta": {
+            "source": "https://kartverket.no/en/about-kartverket/faq",
+            "source_title": "Kartverket — Tinglysingsgebyr for deed and mortgage document (approx. NOK 585 each, 2025 fee schedule)",
+            "last_verified": "2026-10-20",
+            "note": "Approximation; the 2026 fee schedule was not retrieved. Survey, insurance and valuation costs ignored."
+          }
+        }
+      ],
+      "growth": [
+        {
+          "id": "rental_income_tax",
+          "label": "Tax on net rent (flat 22%)",
+          "stage": "growth",
+          "category": "tax",
+          "base": "income",
+          "kind": {
+            "type": "flat",
+            "rate": 0.22
+          },
+          "plain_english": "Rental profit after running costs is capital income, taxed at a flat 22% no matter how much you earn at work. It never attracts the bracket tax or social security contributions that apply to salary.",
+          "meta": {
+            "source": "https://www.skatteetaten.no/person/skatt/hjelp-til-riktig-skatt/bolig-og-eiendeler/bolig-eiendom-tomt/utleie/utleie-av-del-av-egen-bolig/skatteregler/",
+            "source_title": "Skatteetaten — Skatt når du leier ut bolig: normally 22% of the surplus; business-scale letting taxed at up to 50.6%",
+            "last_verified": "2026-10-20",
+            "note": "Letting five or more dwelling units is normally treated as a business and taxed at personal rates up to 50.6%; a single rental is modelled as capital income. Costs fixed at assumptions.property.cost_rate of gross rent; depreciation is not available on residential buildings."
+          }
+        },
+        {
+          "id": "oslo_property_tax",
+          "label": "Oslo municipal property tax (eiendomsskatt)",
+          "stage": "growth",
+          "category": "tax",
+          "base": "value",
+          "kind": {
+            "type": "schedule",
+            "schedule": {
+              "brackets": [
+                {
+                  "from": 0,
+                  "to": 7000000,
+                  "rate": 0
+                },
+                {
+                  "from": 7000000,
+                  "to": null,
+                  "rate": 0.00119
+                }
+              ],
+              "meta": {
+                "source": "https://www.oslo.kommune.no/skatt-og-naring/eiendomsskatt-og-avgift/eiendomsskatt/om-eiendomsskatt-i-oslo/",
+                "source_title": "Oslo kommune — Eiendomsskatt 2026: 1.7‰ of 70% of Skatteetaten's market value, after a NOK 4.9 million bunnfradrag per self-contained dwelling",
+                "last_verified": "2026-10-20",
+                "note": "1.7‰ × 70% = 0.119% of market value above NOK 7.0 million (4.9m ÷ 0.7). Rate cut from 2.35‰ and allowance raised from NOK 4.7m in 2025."
+              }
+            },
+            "stack_on_other_income": false
+          },
+          "plain_english": "Oslo charges a small annual property tax, but only on the part of a dwelling's value above a generous allowance. In 2026 a flat worth less than about NOK 7 million pays nothing; above that the charge is roughly 0.12% of market value per year.",
+          "meta": {
+            "source": "https://www.oslo.kommune.no/skatt-og-naring/eiendomsskatt-og-avgift/eiendomsskatt/om-eiendomsskatt-i-oslo/",
+            "source_title": "Oslo kommune — Om eiendomsskatt i Oslo (2026)",
+            "last_verified": "2026-10-20",
+            "note": "The allowance applies to every self-contained dwelling not used for business, so a single rented flat qualifies. Most other Norwegian municipalities have different or no property tax."
+          }
+        },
+        {
+          "id": "wealth_tax",
+          "label": "Wealth tax (formuesskatt) on the property net of debt",
+          "stage": "growth",
+          "category": "tax",
+          "base": "net_value",
+          "kind": {
+            "type": "schedule",
+            "schedule": {
+              "brackets": [
+                {
+                  "from": 0,
+                  "to": 1900000,
+                  "rate": 0
+                },
+                {
+                  "from": 1900000,
+                  "to": 21500000,
+                  "rate": 0.01
+                },
+                {
+                  "from": 21500000,
+                  "to": null,
+                  "rate": 0.011
+                }
+              ],
+              "meta": {
+                "source": "https://www.skatteetaten.no/satser/formuesskatt/",
+                "source_title": "Skatteetaten — Formuesskatt 2026: 0% to NOK 1,900,000; 1.0% to NOK 21,500,000; 1.1% above. Secondary dwellings valued at 100% of market value (0% discount), with the attached debt fully deductible",
+                "last_verified": "2026-10-20"
+              }
+            },
+            "stack_on_other_income": false
+          },
+          "plain_english": "A second home counts at its full market value for wealth tax, minus any mortgage on it. Each year the net amount above NOK 1.9 million is taxed at 1%, and at 1.1% above NOK 21.5 million. Over a long hold this recurring charge can outweigh the tax you pay when you finally sell.",
+          "meta": {
+            "source": "https://www.skatteetaten.no/satser/formuesskatt/",
+            "source_title": "Skatteetaten — Formuesskatt 2026 satser og verdsettingsrabatter",
+            "last_verified": "2026-10-20",
+            "note": "Your own home would be valued at only 25%, but an investment property is a sekundærbolig at 100%. The allowance is assumed unused by other assets."
+          }
+        }
+      ],
+      "egress": [
+        {
+          "id": "cgt_property",
+          "label": "Tax on the gain (flat 22%)",
+          "stage": "egress",
+          "category": "tax",
+          "base": "gain",
+          "kind": {
+            "type": "flat",
+            "rate": 0.22
+          },
+          "plain_english": "The gain on an investment property is capital income taxed at a flat 22%, however long you held it: there is no discount, no indexation and no exemption after ten years. The exemptions are for a home you lived in for 12 of the last 24 months, or a holiday home used for 5 of the last 8 years, which a rental never meets.",
+          "meta": {
+            "source": "https://www.skatteetaten.no/ordbok/skatt-pa-gevinst-ved-realisasjon-av-fast-eiendom/",
+            "source_title": "Skatteetaten — Skatt på gevinst ved realisasjon av fast eiendom: gains taxable, losses deductible, own-home exemption requires eiertid > 1 year and botid 12 of 24 months",
+            "last_verified": "2026-10-20",
+            "note": "Document fee and purchase costs form part of the cost base. Whole gain realised in one year. Business-scale letting would instead be taxed at personal rates."
+          }
+        },
+        {
+          "id": "agent_commission",
+          "label": "Estate agent commission on sale",
+          "stage": "egress",
+          "category": "cost",
+          "base": "value",
+          "kind": {
+            "type": "flat",
+            "rate": 0.012
+          },
+          "plain_english": "The seller pays the agent in Norway. Finanstilsynet's statistics put the average commission in Oslo at about 1.2% of the sale price, lower than in most countries, partly because fixed fees are charged on top.",
+          "meta": {
+            "source": "https://www.smartepenger.no/boligokonomi/2835-dette-koster-eiendomsmeglerne-per-fylke",
+            "source_title": "Smarte Penger, from Finanstilsynet statistics — average commission in Oslo 1.19% (about NOK 69,900 on a NOK 5.86m sale)",
+            "last_verified": "2026-10-20",
+            "note": "Secondary source summarising Finanstilsynet's per-county commission statistics. Commission is negotiable."
+          }
+        },
+        {
+          "id": "agent_fixed_fees",
+          "label": "Agent fixed fees (tilrettelegging, oppgjør, marketing)",
+          "stage": "egress",
+          "category": "cost",
+          "base": "value",
+          "kind": {
+            "type": "fixed",
+            "amount": 25000
+          },
+          "plain_english": "On top of the commission, Norwegian agents charge fixed fees for preparing the sale, handling settlement and marketing, which together typically come to NOK 20,000 to 35,000. They are a cost, not a tax.",
+          "meta": {
+            "source": "https://www.bytt.no/artikler/forbruker/a-jpaz/skjulte-kostnader-i-meglerkontrakten-gebyrene-som-sluker-boliggevinsten-din",
+            "source_title": "Bytt.no (July 2026) — tilretteleggingsgebyr NOK 12,900–21,900, oppgjørshonorar NOK 5,990–12,900",
+            "last_verified": "2026-10-20",
+            "note": "Assumption of NOK 25,000 all-in; photography, styling and listing fees vary."
+          }
+        }
+      ]
+    }
+  },
+  "property_leverage": {
+    "interest_deductible": true,
+    "rental_loss": [
+      {
+        "treatment": "offset_other_income"
+      }
+    ],
+    "plain_english": "All interest on your own debt is deductible from general income, whatever the loan was for and with no cap. A rental loss therefore reduces the 22% tax on the rest of your income in the same year, so negative gearing is unlimited but worth a flat 22% rather than your marginal rate.",
+    "meta": {
+      "source": "https://www.skatteetaten.no/person/skatt/hjelp-til-riktig-skatt/bolig-og-eiendeler/bolig-eiendom-tomt/lan-og-renter/",
+      "source_title": "Skatteetaten — Lån og renter på lån: interest on all loans is deductible; the deduction is worth 22% (Skatte-ABC R-12: deductible regardless of the purpose of the debt)",
+      "last_verified": "2026-10-20",
+      "note": "The loss offsets general income taxed at 22%; it does not reduce trinnskatt or trygdeavgift, which the flat 22% rental rule reproduces exactly."
+    }
+  }
+}

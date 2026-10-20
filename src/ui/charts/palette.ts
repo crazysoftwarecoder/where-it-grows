@@ -5,7 +5,7 @@ export const SERIES_LIGHT = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba
 export const SERIES_DARK = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767'];
 
 /** Fixed colour slot per country: colour follows the entity, never its rank. */
-export const COUNTRY_SLOT: Record<CountryCode, number> = { au: 0, 'us-tx': 1, 'us-ca': 6, uk: 2, ca: 3, nz: 4, sg: 5, ae: 6, de: 7, ch: 0, in: 1 };
+export const COUNTRY_SLOT: Record<CountryCode, number> = { au: 0, 'us-tx': 1, 'us-ca': 6, uk: 2, ca: 3, nz: 4, sg: 5, ae: 6, de: 7, ch: 0, in: 1, no: 4 };
 
 export const STAGE_SLOT = { ingress: 0, growth: 1, egress: 2 } as const;
 

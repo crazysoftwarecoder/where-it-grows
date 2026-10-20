@@ -1,0 +1,127 @@
+{
+  "country": "no",
+  "indicator": "GDP per capita (current US$), NY.GDP.PCAP.CD",
+  "unit": "USD",
+  "series": [
+    {
+      "year": 2000,
+      "value": 37991.89
+    },
+    {
+      "year": 2001,
+      "value": 38458.25
+    },
+    {
+      "year": 2002,
+      "value": 43048.29
+    },
+    {
+      "year": 2003,
+      "value": 50208.1
+    },
+    {
+      "year": 2004,
+      "value": 57854.57
+    },
+    {
+      "year": 2005,
+      "value": 67358.36
+    },
+    {
+      "year": 2006,
+      "value": 75047.74
+    },
+    {
+      "year": 2007,
+      "value": 86600.24
+    },
+    {
+      "year": 2008,
+      "value": 99001.53
+    },
+    {
+      "year": 2009,
+      "value": 81939.73
+    },
+    {
+      "year": 2010,
+      "value": 90020.34
+    },
+    {
+      "year": 2011,
+      "value": 103545.22
+    },
+    {
+      "year": 2012,
+      "value": 104627.94
+    },
+    {
+      "year": 2013,
+      "value": 106333.14
+    },
+    {
+      "year": 2014,
+      "value": 100410.02
+    },
+    {
+      "year": 2015,
+      "value": 77220.95
+    },
+    {
+      "year": 2016,
+      "value": 73222.4
+    },
+    {
+      "year": 2017,
+      "value": 78771.22
+    },
+    {
+      "year": 2018,
+      "value": 85579.08
+    },
+    {
+      "year": 2019,
+      "value": 79329.31
+    },
+    {
+      "year": 2020,
+      "value": 71057.59
+    },
+    {
+      "year": 2021,
+      "value": 96442.56
+    },
+    {
+      "year": 2022,
+      "value": 113122.13
+    },
+    {
+      "year": 2023,
+      "value": 90984.41
+    },
+    {
+      "year": 2024,
+      "value": 89888.95
+    },
+    {
+      "year": 2025,
+      "value": 94594.19
+    }
+  ],
+  "projection": {
+    "method": "cagr_last_10y",
+    "cagr": 0.0205,
+    "meta": {
+      "source": "https://api.worldbank.org/v2/country/NOR/indicator/NY.GDP.PCAP.CD?format=json&per_page=100",
+      "source_title": "World Bank WDI NY.GDP.PCAP.CD",
+      "last_verified": "2026-10-20",
+      "note": "CAGR computed from 2015 (77220.95) to 2025 (94594.19), 10 years. Norway's series is volatile because oil and gas prices and the krone move the USD value; 2022 was a gas-price peak."
+    }
+  },
+  "meta": {
+    "source": "https://api.worldbank.org/v2/country/NOR/indicator/NY.GDP.PCAP.CD?format=json&per_page=100",
+    "source_title": "World Bank WDI NY.GDP.PCAP.CD",
+    "last_verified": "2026-10-20",
+    "note": "World Bank API lastupdated 2026-10-08; 26 annual points 2000-2025, nulls dropped."
+  }
+}

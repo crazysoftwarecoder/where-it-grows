@@ -4,7 +4,7 @@
 
 **Where does $100K grow best after tax?**
 
-A static site that simulates investing USD 100,000 (adjustable) for 10–25 years in ten countries (Australia, United States — Texas and California separately, with state taxes —, United Kingdom, Canada, New Zealand, Singapore, UAE, Germany, Switzerland, India) and shows every tax that bites at **ingress** (buying in), **growth** (each year you hold) and **egress** (selling out), for an equities index portfolio and a residential investment property side by side. It also charts how GDP per capita is rising in each country and what a family of four spends there each year.
+A static site that simulates investing USD 100,000 (adjustable) for 10–25 years in eleven countries (Australia, United States — Texas and California separately, with state taxes —, United Kingdom, Canada, New Zealand, Singapore, UAE, Germany, Switzerland, India, Norway) and shows every tax that bites at **ingress** (buying in), **growth** (each year you hold) and **egress** (selling out), for an equities index portfolio and a residential investment property side by side. It also charts how GDP per capita is rising in each country and what a family of four spends there each year.
 
 Every chart is clickable. A click opens a drill-down listing each tax with its amount, the rule in plain English, the primary source URL and the date it was last verified.
 
