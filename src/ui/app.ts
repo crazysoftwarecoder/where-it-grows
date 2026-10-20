@@ -115,7 +115,7 @@ export function startApp(): void {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sheet.classList.contains('is-open')) closeSheet(); });
 
   function renderSummary(): void {
-    renderSummaryTables(summaryHost, ledgers, state, names, (country, asset) => openSheet({ country, asset, stage: 'egress' }));
+    renderSummaryTables(summaryHost, ledgers, state, names, (country, asset, stage) => openSheet({ country, asset, stage }));
   }
 
 
