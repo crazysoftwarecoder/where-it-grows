@@ -25,7 +25,7 @@ export interface AppState {
 
 export const DEFAULT_STATE: AppState = {
   horizon: 15,
-  principal: 1_000_000,
+  principal: 100_000,
   countries: ['au', 'us-tx', 'us-ca', 'uk', 'sg'],
   asset: 'both',
   eqGrowth: 7,

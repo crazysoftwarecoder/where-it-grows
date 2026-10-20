@@ -1,5 +1,5 @@
 {
-  "principal_usd": 1000000,
+  "principal_usd": 100000,
   "horizon_years_default": 15,
   "equities": {
     "growth": 0.07,
